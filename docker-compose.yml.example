@@ -1,0 +1,66 @@
+version: '3.4'
+
+x-postgres-variables: &postgres-variables
+  POSTGRES_DB: nextcloud_db
+  POSTGRES_USER: ${NEXTCLOUD_DB_USER:-nextcloud}
+  POSTGRES_PASSWORD: ${NEXTCLOUD_DB_PASSWORD:-pass}
+  POSTGRES_HOST: nextcloud-db
+
+services:
+  nextcloud:
+    container_name: nextcloud-app
+    image: nextcloud:fpm
+    stdin_open: true
+    tty: true
+    restart: always
+    expose:
+      - '80'
+      - '9000'
+    volumes:
+      - ./nextcloud/app:/var/www/html
+      - ./nextcloud/public/skeleton:/var/www/html/core/skeleton
+    environment:
+      <<: *postgres-variables
+    depends_on:
+      - postgres
+
+  onlyoffice-document-server:
+    container_name: onlyoffice-document-server
+    image: onlyoffice/documentserver:latest
+    stdin_open: true
+    tty: true
+    restart: always
+    expose:
+      - '80'
+      - '443'
+    volumes:
+      - ./onlyoffice/data:/var/www/onlyoffice/Data
+
+  postgres:
+    container_name: nextcloud-db
+    image: postgres:12
+    stdin_open: true
+    tty: true
+    restart: always
+    expose:
+      - '5432'
+    environment:
+      <<: *postgres-variables
+    volumes:
+      - nextcloud-db:/var/lib/postgresql/data
+
+  nginx:
+    container_name: nginx-server
+    image: nginx
+    stdin_open: true
+    tty: true
+    restart: always
+    ports:
+      - 4080:80
+      # - 443:443
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nextcloud/app:/var/www/html
+
+volumes:
+  nextcloud-db:

@@ -16,6 +16,7 @@ Document Server and Nextcloud Docker installation will install the preconfigured
     ```
     git clone https://github.com/ONLYOFFICE/docker-onlyoffice-nextcloud
     cd docker-onlyoffice-nextcloud
+    cp docker-compose.yml.example docker-compose.yml
     ```
 
 2. Run Docker Compose:
@@ -30,12 +31,12 @@ Document Server and Nextcloud Docker installation will install the preconfigured
 
 3. Now launch the browser and enter the webserver address. The Nextcloud wizard webpage will be opened. Enter all the necessary data to complete the wizard.
 
-4. Go to the project folder and run the `set_configuration.sh` script:
+4. Go to the project folder and run the `config.sh` script:
 
     **Please note**: the action must be performed with **root** rights.
 
     ```
-    bash set_configuration.sh
+    ./nextcloud/bin/config.sh
     ```
 
 Now you can enter Nextcloud and create a new document. It will be opened in ONLYOFFICE Document Server.
@@ -43,7 +44,7 @@ Now you can enter Nextcloud and create a new document. It will be opened in ONLY
 
 ## ONLYOFFICE Document Server editions
 
-Here we offer you to deploy ownCloud with preconfigured free version of ONLYOFFICE Document Server. Note that there're commercial versions of it. 
+Here we offer you to deploy ownCloud with preconfigured free version of ONLYOFFICE Document Server. Note that there're commercial versions of it.
 
 **ONLYOFFICE Document Server:**
 
@@ -60,13 +61,13 @@ The table below will help you make the right choice.
 | Simultaneous connections | up to 20 maximum  | As in chosen pricing plan |
 | Number of users | up to 20 recommended | As in chosen pricing plan |
 | License | GNU AGPL v.3 | Proprietary |
-| **Support** | **Community Edition** | **Integration Edition** | 
+| **Support** | **Community Edition** | **Integration Edition** |
 | Documentation | [Help Center](https://helpcenter.onlyoffice.com/server/docker/opensource/index.aspx) | [Help Center](https://helpcenter.onlyoffice.com/server/integration-edition/index.aspx) |
 | Standard support | [GitHub](https://github.com/ONLYOFFICE/DocumentServer/issues) or paid | One year support included |
 | Premium support | [Buy Now](https://www.onlyoffice.com/support.aspx?utm_source=github&utm_medium=cpc&utm_campaign=GitHubDockerNC) | [Buy Now](https://www.onlyoffice.com/support.aspx?utm_source=github&utm_medium=cpc&utm_campaign=GitHubDockerNC) |
-| **Services** | **Community Edition** | **Integration Edition** | 
-| Conversion Service                | + | + | 
-| Document Builder Service          | + | + | 
+| **Services** | **Community Edition** | **Integration Edition** |
+| Conversion Service                | + | + |
+| Document Builder Service          | + | + |
 | **Interface** | **Community Edition** | **Integration Edition** |
 | Tabbed interface                       | + | + |
 | White Label                            | - | - |

@@ -1,0 +1,5 @@
+docker-compose.yml
+nextcloud/app/*
+!nextcloud/app/.keep
+onlyoffice/data/*
+!onlyoffice/data/.keep
