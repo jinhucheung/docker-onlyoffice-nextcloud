@@ -3,3 +3,5 @@ nextcloud/app/*
 !nextcloud/app/.keep
 onlyoffice/data/*
 !onlyoffice/data/.keep
+nextcloud/public/data/*
+!nextcloud/public/data/*.example
