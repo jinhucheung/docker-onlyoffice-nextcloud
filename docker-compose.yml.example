@@ -18,7 +18,6 @@ services:
       - '9000'
     volumes:
       - ./nextcloud/app:/var/www/html
-      - ./nextcloud/public/skeleton:/var/www/html/core/skeleton
     environment:
       <<: *postgres-variables
     depends_on:
