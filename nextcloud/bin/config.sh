@@ -26,7 +26,8 @@ docker exec -u www-data nextcloud-app php occ --no-warnings config:system:set de
 docker exec -u www-data nextcloud-app php occ --no-warnings config:system:set default_locale --value="zh-cn"
 docker exec -u www-data nextcloud-app php occ --no-warnings config:system:set logtimezone --value="Asia/Hong_Kong"
 
-docker exec -u www-data nextcloud-app php occ --no-warnings config:system:set skeletondirectory --value="/var/www/html/_public/skeleton"
+docker cp ../public/skeleton nextcloud-app:/var/www/html/_skeleton
+docker exec -u www-data nextcloud-app php occ --no-warnings config:system:set skeletondirectory --value="/var/www/html/_skeleton"
 
 docker exec -u www-data nextcloud-app php occ --no-warnings config:system:set onlyoffice DocumentServerUrl --value="/ds-vpath/"
 docker exec -u www-data nextcloud-app php occ --no-warnings config:system:set onlyoffice DocumentServerInternalUrl --value="http://onlyoffice-document-server/"
